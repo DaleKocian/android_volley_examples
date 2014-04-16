@@ -15,6 +15,7 @@ android {
     buildTypes {
         debug {
             buildConfigField "boolean", "DEVELOPER_MODE", "true"
+            runProguard false
         }
         release {
             buildConfigField "boolean", "DEVELOPER_MODE", "false"
@@ -36,7 +37,7 @@ dependencies {
     compile 'com.android.support:support-v4:19.1.0'
     compile 'com.mcxiaoke.volley:library:1.0.3'
     compile 'com.google.code.gson:gson:2.2.4'
-    compile files('libs/khandroid-httpclient-4.2.3.jar')
+    compile files("libs/khandroid-httpclient-4.2.3.jar")
 
 }
 
