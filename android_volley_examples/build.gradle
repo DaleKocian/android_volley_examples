@@ -1,4 +1,4 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 android {
     ext {
         compileSdkVersion rootProject.ext.compileSdkVersion
@@ -6,7 +6,7 @@ android {
     }
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -15,11 +15,11 @@ android {
     buildTypes {
         debug {
             buildConfigField "boolean", "DEVELOPER_MODE", "true"
-            runProguard false
+            minifyEnabled false
         }
         release {
             buildConfigField "boolean", "DEVELOPER_MODE", "false"
-            runProguard false
+            minifyEnabled false
             proguardFile getDefaultProguardFile('proguard-android.txt')
         }
     }
@@ -34,13 +34,16 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.1.0'
-    compile 'com.mcxiaoke.volley:library:1.0.3'
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.mcxiaoke.volley:library:1.0.8'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.squareup.okio:okio:1.0.1'
+    compile 'com.squareup.okhttp:okhttp:2.1.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.1.0'
     compile files("libs/khandroid-httpclient-4.2.3.jar")
 
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.2.1'
 }
