@@ -54,9 +54,9 @@ public class SsX509TrustManager implements javax.net.ssl.X509TrustManager {
         javax.net.ssl.X509TrustManager ret = null;
         TrustManagerFactory tmf = prepareTrustManagerFactory(keyStore, keyStorePassword);
         TrustManager tms[] = tmf.getTrustManagers();
-        for (int i = 0; i < tms.length; i++) {
-            if (tms[i] instanceof javax.net.ssl.X509TrustManager) {
-                ret = (javax.net.ssl.X509TrustManager) tms[i];
+        for (TrustManager tm : tms) {
+            if (tm instanceof X509TrustManager) {
+                ret = (X509TrustManager) tm;
 //              break;
             }
         }
@@ -102,8 +102,9 @@ public class SsX509TrustManager implements javax.net.ssl.X509TrustManager {
     @Override
     public X509Certificate[] getAcceptedIssuers() {
         final ArrayList<X509Certificate> list = new ArrayList<X509Certificate>();
-        for (X509TrustManager tm : mX509TrustManagers)
+        for (X509TrustManager tm : mX509TrustManagers) {
             list.addAll(Arrays.asList(tm.getAcceptedIssuers()));
+        }
         return list.toArray(new X509Certificate[list.size()]);
     }
 }

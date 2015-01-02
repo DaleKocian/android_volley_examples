@@ -58,7 +58,7 @@ public class Act_SsSslHttpClient extends Activity {
                 // Usually getting the request queue shall be in singleton like in {@see Act_SimpleRequest}
                 // Current approach is used just for brevity
                 RequestQueue queue = Volley.newRequestQueue(Act_SsSslHttpClient.this,
-                        new ExtHttpClientStack((HttpClient)new SslHttpClient(keyStore, "test123", 44400)));
+                        new ExtHttpClientStack((HttpClient) new SslHttpClient(keyStore, "test123", 44400)));
                 StringRequest myReq = new StringRequest(Method.GET,
                         "https://ave.bolyartech.com:44401/https_test.html",
                         createMyReqSuccessListener(),

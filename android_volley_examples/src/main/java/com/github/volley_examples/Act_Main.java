@@ -23,7 +23,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-
 /**
  * Main activity. All demos are started from here.
  *
